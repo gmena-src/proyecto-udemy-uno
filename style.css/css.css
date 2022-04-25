@@ -1,0 +1,321 @@
+/*El iniciar un selector con ":" se les conoce como
+pseudo selector, elementos que no existe como tal en el 
+html, "root" se utiliza para almacenar variables de css 
+se le llaman custompropertys*/
+
+/* definimos paleta de colores
+aunque se definene de manera diferente a
+propiedad-valor */
+
+:root {
+    /*se inician "--" "seguido de la definicion" ":" y "valor" ";"
+    que quiereas*/
+    /*VARIABLES DE CSS*/
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #ffc107;
+    --secuandario: #0097a7;
+    --gris: #757575;
+    --grisClaro: #dfe9f3;
+    --fuente-principal: 3.8rem;
+    /*para utilizar nuestros custom property es 
+    color : var(--primario);
+    */
+}
+
+/* Globales */
+html {
+    font-size: 62.5%;
+    /*hack para utilizar la adaptacion de rem a pixeles*/
+    /*1 rem = 10px*/
+    /*esto permite que se adapte perfectamente a cualquier pantalla, sea mobil, pantallas etc*/
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    /*documentacion https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+    box-sizing: inherit;
+}
+
+body {
+    /* Es la parte visible del documento */
+    font-size: 16px;
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+    /* utilizamos esta propiedad para acceder a los gradientes o colores degradados
+    -Primero colocamos de donde parte y hacia donde va (en este caso va hacia arriba ("to" nos habilita las 4 direcciones)partiendo desde el principio 0)
+    -Segundo cual seria el color que iniciara 
+    -Tercero le pasamos hacia que color va a ir y hasta donde va que seria hasta el total del documento osea el 100% */
+    /*fuente descargada*/
+    /*lo que coloques en el body se aplicara en todo el documento*/
+}
+
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+    /*max-width<<--sirve para que no aparezca ese scroll blanco a los lados, le indica que solo tome los 1200px como maximo, sino que tome el 100% que es lo max que toma un div*/
+    /*margin-top: 0;/*margin esta definido por 4 valores*/
+    /*margin-right: auto;segun que margen sea aplica separacion*/
+    /*margin-bottom: 0;*/
+    /*margin-left: auto;*/
+    /*MARGIN ESTABLECE DISTANCIA ENTRE EL ELEMENTO HACIA AFUERA, con el elemento que tenga mas secano
+                    la etiqueta margen te permite, ingresar los valores de esta manera
+                    ya que entiende que el primer valor es top, el segundo right, bottom
+                    y el ultimo es left*/
+}
+
+.boton {
+    /*CSS del boton siempre es buena practica crear uno mismo para que sea reutilizable, y si tienes que cambiar el aspecto de los botones es mejor hacerlo mediante la hoja de estilo que seria una sola, y no cambar a mano 500 botenes en el html*/
+    background-color: var(--secuandario);
+    /*agrega color azul de fondo en su bloque*/
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    /*engorda el boton desde el top-roght-botttom-left*/
+    margin: 1rem;
+    /*agrega separacion de este elemento y el texto de arriba*/
+    font-size: 2rem;
+    text-decoration: none;
+    /*esto quita la linea debajo del enlace por default*/
+    text-transform: uppercase;
+    /*trasforma todo el texto en mayuscula*/
+    font-weight: bold;
+    /*el texto un poco mas en negrita bold=700 */
+    border-radius: 0.5rem;
+    /*bordes redondeados*/
+    width: 90%;
+    /*esto es muy util para que en dispositivos mobiles al achicarse la pantalla el boton ocupe el 90% del bloque y se facil acceder a el*/
+    text-align: center;
+    /*centramos el texto al medio del boton indiferentemente del dispositivo en que se ecuentre*/
+}
+
+@media (min-width: 768px) {
+
+    /*con este mq resolvemos el problema de al maximizar la pantalla tome el 90%, al pasar los 768px se reinicia el valor*/
+    .boton {
+        width: auto;
+    }
+}
+
+/* Tipografia */
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+/* Titulos */
+.titulo span {
+    font-size: 2rem;
+}
+
+/* Navegacion Principal */
+.nav-bg {
+    background-color: var(--secuandario);
+    /*con esta utility class completamos el color de fondo en los margenes*/
+}
+
+.navegacion-principal {
+    display: flex;
+    flex-direction: column;
+    /*column hace que se muestren de arriba hacia bajo-sirve mucho para la vista de mobil*/
+    /*nos habilita -flexbox en el elemento de la navegacion principal, y nos brinda nuevas propiedades*/
+    /*propiedad heredada de -flexbox, nos permite distribuir los elementos horizontalmente y vertical haciendo cambios*/
+    /*la palabra space nos habilita a distribuir de diferete manera el contenido*/
+}
+
+@media (min-width: 768px) {
+
+    /*los media querie heredan las propiedades, con esto le decimos que llegado cierto tamaño se muestren de diferente manera*/
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content: space-between;
+        /*alinear elementos horizontalmente sirve bastante para la navegacion-centra horizontalmente-*/
+    }
+}
+
+.navegacion-principal a {
+    display: block;
+    /*le dice que tomen todo el espacio los enlaces de navegacion*/
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+    /*padding aumenta el tamaño dentro de la etiqueta a diferencia de margin que lo hace del elemento hacia afuera*/
+    /* de la misma forma que margin esta etiqueta al tener un valor solo entiende que es en top-right-bottom-left-el pading se aplica de la orilla hacia adentro*/
+}
+
+.navegacion-principal a:hover {
+    /*Es un evento de css-el usuario se esta colocando en el enlace-color de fondo-evento de css es una seudo clase, se crea al momento*/
+    background-color: var(--primario);
+    color: var(--oscuro);
+    /*esto va a aplicar color negro cuando el usuario pae por encima del enlace, cambiara de blanco a negro*/
+}
+
+/* Hero */
+.hero {
+    background-image: url(../img/hero.jpg);
+    /*colocamos via url la imagen y NO con una etiqueta <img>, para salir de la carpeta style.css 
+                                            - é ingresar en la carpeta img "hacemos "../" */
+    background-repeat: no-repeat;
+    /*"por default las imagenes al achicar el sitio web, se repiten con esto logramos que no se repita"*/
+    background-size: cover;
+    /*con esta propiedad seteamos la imagen para que al dar scroll -100% se adapte y no deje margenes en blanco*/
+    height: 450px;
+    position: relative;
+    /*position permite que el hijo se pueda posicionar de manera absoluta,
+                        siempre se debe colocar el valor "relative" al elemento padre
+                        las propiedades o coordenadas seran top-bottom-left-right para determinar su posicion vertical-horizontal
+                        si no colocamos relative, tomaria como padre el documento, va a tomar como coordenadas todo el documento*/
+}
+
+.contenido-hero {
+    position: absolute;
+    /*se denomina asi al elemento hijo, para poder fijarlo en el punto exacto donde queremos, 
+                        dentro del bloque padre en este caso .hero, utilizaremos top-bottom-left-right para determinar las coordenadas*/
+    background-color: rgba(0, 0, 0, .7);
+    /*el ultimo valor es el alpha channel que determina la transparencia*/
+    background-color: rgb(0 0 0 / 70%);
+    /*nueva sintaxis ( "sin comas y agregando" / 70% )para el color RGB agregando " / 70% " 0-100 indicando el nivel de transparencia*/
+    height: 100%;
+    width: 100%;
+    /*bloque de codigo para centrar verticalmente*/
+    display: flex;
+    /*nos permite alinear nuestro contenido horizontalamente con justify-content: */
+    flex-direction: column;
+    /*al cambiar a "colum" *debemos utilizar "align-items" para centrar verticalmente nuestro contenido**/
+    /*si tuviera flex-direction: row, que es el default utilizariamos justify-content para centrar horizontalmente*/
+    align-items: center;
+    /*al cambiar flex-direction: column, se invierte la manera de centrar, en este caso align-items centrara el contenido de manera vertical*/
+    justify-content: center;
+    /*al cambiar flex-direction: row, por column justify-content: centrara el contenido de manera horizontal */
+}
+
+.contenido-hero h2,
+/*selector en MODULO Selecciona multiples elementos*/
+.contenido-hero p {
+    color: var(--blanco);
+}
+
+.contenido-hero .ubicacion {
+    display: flex;
+    /*por defaul esta en flex-direction: row, por lo tanto align-items: nos sirve para alinear verticalmente*/
+    align-items: flex-end;
+    /*esta propiedad centra los elementos y con el flex end lo hace desde partiendo desde el bottom*/
+}
+
+/* servicios */
+@media (min-width: 768px) {
+
+    /* a partir de los 768px recien muestrame la 3 columnas */
+    .servicios {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* creame 3 columnas de 1 fraccion, 33.3% 33.3% 33.3% es lo mismo, o 1fr 1fr 1fr;  */
+        column-gap: 1rem;
+        /* separacion entre columnas */
+
+
+    }
+}
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3 {
+    color: var(--secuandario);
+    text-align: center;
+}
+
+.servicio p {
+    line-height: 2;
+    /* interlineado */
+}
+
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* contacto */
+.formulario {
+    background-color: var(--gris);
+    width: min(60rem, 100%); /* compara que es mas pequeño, utlizar el valor mas pequeño, te ahorras mq, se evalua segun el dispositivo, y compara que tamaño usar */
+    margin: 0 auto;/* si el padre no tiene o no cuenta con display flex se centra con margin 0 auto */
+    padding: 2rem;
+    border-radius: 1rem;
+}
+.formulario fieldset {
+    border: none;/* quita el borde por default */
+}
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.contenedor-campos {
+
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {}
+
+/*
+@media (min-width: 480px) {telefono
+    
+ }
+
+@media (min-width: 768px) {tablet
+    
+ }
+
+@media (min-width: 1140) {*pc laptop
+    
+ }
+@media (min-width: 1440) {
+    
+ }
+
+
+Respondive web Design
+
+*Es un enfoque que nos dice que nuestros diseños deben adaptarse a las interacciones del usuario y la resolución que utilizan
+*Los sitios web deberán adaptarse a celulares-tablets-laptops-computadoras de escritorio, tv.
+
+<Como lograr que el sitio sea responsive?
+
+Media Queries
+-Sintaxis-
+@media (min-width:768px){<<<<----condicion-- El siguiente codigo se CSS jse aplicara bajo estas
+
+}
+@media (min-width:992px){
+
+}
+*/
