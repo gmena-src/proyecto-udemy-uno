@@ -241,7 +241,7 @@ h3 {
 }
 
 .servicio h3 {
-    color: var(--secuandario);
+    color: var(--oscuro);
     text-align: center;
 }
 
@@ -267,24 +267,38 @@ h3 {
     margin: 0 auto;/* si el padre no tiene o no cuenta con display flex se centra con margin 0 auto */
     padding: 2rem;
     border-radius: 1rem;
+    display: grid;
 }
 .formulario fieldset {
     border: none;/* quita el borde por default */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:repeat 1fr 2fr 1fr;
 }
 .formulario legend {
-    text-align: center;
+    margin: 0 auto;
     font-size: 1.8rem;
+    color: var(--primario);
+    padding-bottom: 2rem;
+
 }
 
 .contenedor-campos {
-
+    
 }
-
 .campo {
     margin-bottom: 1rem;
+    color: var(--blanco);
 }
-
-.campo label {}
+.campo label {
+    color: var(--blanco);
+}
+.campo input{
+    border-radius: .5rem;
+}
+.boton input {
+    color: var(--blanco);
+    margin-left: 100%;
+}
 
 /*
 @media (min-width: 480px) {telefono
